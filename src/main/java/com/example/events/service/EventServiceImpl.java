@@ -21,4 +21,24 @@ public class EventServiceImpl implements EventService {
     public List<Event> getAll() {
         return eventDAO.readAll();
     }
+
+    @Override
+    public Event get(Long id) {
+        return eventDAO.read(id);
+    }
+
+    @Override
+    public void delete(Event event) {
+        eventDAO.delete(event);
+    }
+
+    @Override
+    public void update(Event event) {
+        eventDAO.update(event);
+    }
+
+    @Override
+    public void create(Event event) {
+        eventDAO.create(event);
+    }
 }

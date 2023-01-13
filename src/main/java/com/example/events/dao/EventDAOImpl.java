@@ -3,6 +3,7 @@ package com.example.events.dao;
 import com.example.events.model.Event;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -31,17 +32,26 @@ public class EventDAOImpl implements EventDAO {
     }
 
     @Override
-    public void update() {
-
+    public void update(Event event) {
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        session.merge(event);
+        transaction.commit();
     }
 
     @Override
-    public void create() {
-
+    public void create(Event event) {
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        session.persist(event);
+        transaction.commit();
     }
 
     @Override
-    public void delete() {
-
+    public void delete(Event event) {
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        session.remove(event);
+        transaction.commit();
     }
 }
