@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "events_api")
+@Table(name = "events")
 public class Event {
 
     @Id
